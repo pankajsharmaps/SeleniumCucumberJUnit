@@ -17,9 +17,6 @@ import utils.ReadLocators;
 public class KayakHomePage extends BaseClass{
 	
 	ReadLocators rl = new ReadLocators();
-	
-	
-	@Test//
 	public void searchDestination(String city) throws InterruptedException {
 		WebElement destination = driver.findElement(By.xpath(rl.getLocatorValue("dest_field")));
 //		Assert.assertEquals("Nums are equal", 1, 0);
@@ -45,25 +42,14 @@ public class KayakHomePage extends BaseClass{
 		System.out.println(cityCheck);
 		
 		Assert.assertEquals(true,cityCheck);
-		
-//		Thread.sleep(2000);
-		
-//		destination.sendKeys(Keys.TAB);
 		Thread.sleep(2000);
-		
-//		destination.sendKeys(Keys.ENTER);
 		
 	}
 		
 	public void fromDateSelection(String fDate) {	
 		List<WebElement> calender = driver.findElements(By.xpath("//*[@class='JONo-icon']"));
-//		calender.sendKeys(Keys.ENTER);
-//		calender.click();
-		
-		System.out.println("Calender size : "+calender.size());
-		
+		System.out.println("Calender size : "+calender.size());		
 		Actions ac = new Actions(driver);
-		
 		ac.moveToElement(calender.get(0)).click().build().perform();		
 		
 		

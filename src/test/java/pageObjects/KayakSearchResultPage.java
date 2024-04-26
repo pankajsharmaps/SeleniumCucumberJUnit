@@ -1,7 +1,9 @@
 package pageObjects;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,22 +19,36 @@ public class KayakSearchResultPage extends BaseClass{
 	ReadLocators rl = new ReadLocators();
 	
 	public void priceSortingValidation() throws InterruptedException {
+		
+		System.out.println(driver.getTitle());
+		
+		List <String> LWH = new ArrayList<String>(driver.getWindowHandles());
+		
+		int wSize = LWH.size();
+		
+		System.out.println(wSize+" : "+LWH.get(0));
+		
+//		driver.switchTo().window(LWH.get(wSize-1));
 			
-		WebElement cheapestLink = driver.findElement(By.cssSelector(rl.getLocatorValue("cheapest_link_css")));
+		Thread.sleep(10000);
+		WebElement cheapestLink = driver.findElement(By.xpath(rl.getLocatorValue("cheapest_link_css")));
 		cheapestLink.click();
 		
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 		
 		List <WebElement> priceList = 
 				new WebDriverWait (driver, Duration.ofSeconds(30)).
 				until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(rl.getLocatorValue("prices_xpath"))));
 		Thread.sleep(2000);
 		Reporter.log("The number of flight result in default view is : "+priceList.size());
+		
+		System.out.println(priceList.size());
 				
 		int priceListInt [] = new int[priceList.size()];
 		
 		for (int i =0;  i<priceList.size(); i++) {
-			priceListInt[i] =  Integer.parseInt((priceList.get(i).getText().split(" ")[1]).replace(",", ""));	
+//			priceListInt[i] =  Integer.parseInt((priceList.get(i).getText().split(";")[1]).replace(",", ""));	
+			System.out.println(priceList.get(i).getText());
 		}
 		
 		boolean priceOrderCheck = true;

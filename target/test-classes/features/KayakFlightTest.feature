@@ -11,9 +11,9 @@ Feature: I want to test Kayak flight search functionality
     
     Examples: 
     
-    | city 		| 		fromDate 					| todate 			 		 |
-    | Mumbai 	| 20 May, 2024			  | 27 May, 2024  |
-    #| Pune 		| 10 October, 2024 			| 15 October, 2024 |
+    | city 		| 		fromDate 					| todate 	  		 |
+    | Mumbai 	| 26 May, 2024			    | 27 May, 2024   |
+    | Pune 		| 27 June, 2024 			  | 29 June, 2024  |
     
     
     #@Functional
